@@ -1,0 +1,82 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="navigation2">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="home#page-top">{{title}}</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="home#about" style="color: #212121;">About</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="home#contact"  style="color: #212121;">Contact</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="providers"  style="color: #212121;">Service Provider</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login"  style="color: #212121;">Login</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="register"  style="color: #212121;">Register</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Provider List Section -->
+<section class="page-section" style="height: 85%;">
+    <div class="container">
+        <h2 class="text-center mt-0">Service Providers</h2>
+        <hr class="divider my-4" />
+        <a href="/providers/add-provider" class="btn btn-primary btn-sm my-2">Add New Provider</a>
+        <div class="row justify-content-center">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each providers}}
+                        <tr>
+                            <td scope="row">{{ id }}</td>
+                            <td scope="row">{{ firstname }}</td>
+                            <td scope="row">{{ lastname }}</td>
+                            <td scope="row">{{ position }}</td>
+                            <td scope="row">{{ company.company_name }}</td>
+                            <td scope="row">
+                                <a href="/providers/details/{{ id }}" class="btn btn-info btn-sm">More info...</a>
+                                <a href="/providers/edit/{{ id }}" class="btn btn-secondary btn-sm">Edit</a>
+                                <a href="#deleteModal{{id}}" data-toggle="modal" type="button" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        
+                        <div class="modal" tabindex="-1" role="dialog" id="deleteModal{{id}}">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Are you Sure?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <a type="button" href="/providers/delete/{{ id }}" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Start Bootstrap</div></div>
+</footer>
+
