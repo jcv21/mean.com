@@ -1,0 +1,156 @@
+<section class="page-section">
+    <div class="container">
+        <h2 class="text-center mt-0">Add a New Provider</h2>
+        <hr class="divider my-4" />
+        <h1 class="mt-0 text-success text-center" *ngIf="submitted">Added Successfully!</h1>
+        <div class="mx-5 px-5">
+            <p class="mt-0 alert alert-danger" *ngIf="emailError">
+                *Error: {{emailErrorMsg}}
+            </p>
+        </div>
+        <form class="add" [formGroup]="providersForm" *ngIf="!submitted" (ngSubmit)="handleSubmit()">
+            <div class="col-md-12 px-5">
+                <div class="row mx-5">
+                    <!-- Inputbox First Name -->
+                    <div class="col-md-6 form-group">
+                        <label for="input_first_name">First Name</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.firstname.touched && f.firstname.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" formControlName="firstname" id="input_first_name">
+                        
+                        <!-- Minimum length Warning Message -->
+                        <div class="text-danger" *ngIf="f.firstname.touched && f.firstname.errors?.minlength">
+                            Minimum 2 characters
+                        </div>
+                    </div>
+                    <!-- Inputbox Last Name -->
+                    <div class="col-md-6 form-group">
+                        <label for="input_last_name">Last Name</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.lastname.touched && f.lastname.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_last_name" formControlName="lastname">
+                        <!-- Minimum length Warning Message -->
+                        <div class="text-danger" *ngIf="f.lastname.touched && f.lastname.errors?.minlength">
+                            Minimum 2 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-md-12 form-group">
+                        <label for="input_position">Position</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.position.touched && f.position.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_position" formControlName="position">
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-md-6 form-group">
+                        <label for="input_email">Email</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.email.touched && f.email.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_email" formControlName="email">
+                        <!-- Invalid Warning Message -->
+                        <div class="text-danger" *ngIf="f.email.touched && f.email.invalid">
+                            Invalid Email
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="input_phone">Phone</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.phone.touched && f.phone.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_phone" formControlName="phone">
+                        <!-- Invalid Number Warning Message -->
+                        <div class="text-danger" *ngIf="f.phone.touched && f.phone.errors?.pattern">
+                            Enter as: 234-567-8900<br>
+                            Area code cannot start with 0 or 1
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider my-4" />
+                <div class="row mx-5">
+                    <div class="col-md-12 form-group">
+                        <label for="input_com_name">Company Name</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.company_name.touched && f.company_name.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_com_name" formControlName="company_name">
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-md-12 form-group">
+                        <label for="input_address">Address</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.address.touched && f.address.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_address" formControlName="address">
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-md-12 form-group">
+                        <label for="input_addres_two">Address 2</label>
+                        <input type="text" class="form-control" id="input_addres_two" formControlName="address2">
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-md-6 form-group">
+                        <label for="input_city">City</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.city.touched && f.city.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_city" formControlName="city">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="input_state">State</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.state.touched && f.state.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_state" formControlName="state">
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label for="input_zip_code">Zip Code</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.postal_code.touched && f.postal_code.errors?.required">
+                            *Required
+                        </span>
+                        <input type="text" class="form-control" id="input_zip_code" formControlName="postal_code">
+                    </div>
+                </div>
+                <div class="row mx-5">
+                    <div class="col-md-6 form-group">
+                        <label for="input_descr">Description</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.description.touched && f.description.errors?.required">
+                            *Required
+                        </span>
+                        <textarea type="text" class="form-control" id="input_descr" formControlName="description"></textarea>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="input_tag_line">Tag Line</label>
+                        <!-- Required Message -->
+                        <span class="text-danger" *ngIf="f.tagline.touched && f.tagline.errors?.required">
+                            *Required
+                        </span>
+                        <textarea type="text" class="form-control" id="input_tag_line" formControlName="tagline"></textarea>
+                    </div>
+                </div>
+                <div class="row mx-5 px-3">
+                    <button class="btn btn-primary btn-block" type="submit">Add Provider</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
