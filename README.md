@@ -1,2 +1,2 @@
 # mean.com
-A javascript website.
+A CRUD javascript website.
